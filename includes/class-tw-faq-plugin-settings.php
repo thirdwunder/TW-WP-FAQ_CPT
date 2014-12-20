@@ -67,7 +67,7 @@ class TW_FAQ_Plugin_Settings {
 	 * @return void
 	 */
 	public function add_menu_item () {
-		$page = add_options_page( __( 'Plugin Settings', 'tw-faq-plugin' ) , __( 'Plugin Settings', 'tw-faq-plugin' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ) );
+		$page = add_options_page( __( 'TW FAQ', 'tw-faq-plugin' ) , __( 'TW FAQ', 'tw-faq-plugin' ) , 'manage_options' , $this->parent->_token . '_settings' ,  array( $this, 'settings_page' ) );
 		add_action( 'admin_print_styles-' . $page, array( $this, 'settings_assets' ) );
 	}
 
@@ -108,112 +108,119 @@ class TW_FAQ_Plugin_Settings {
 	private function settings_fields () {
 
 		$settings['standard'] = array(
-			'title'					=> __( 'Standard', 'tw-faq-plugin' ),
-			'description'			=> __( 'These are fairly standard form input fields.', 'tw-faq-plugin' ),
+			'title'					=> __( 'Settings', 'tw-faq-plugin' ),
+			'description'			=> __( 'Third Wunder FAQ plugin settings.', 'tw-faq-plugin' ),
 			'fields'				=> array(
-				array(
-					'id' 			=> 'text_field',
-					'label'			=> __( 'Some Text' , 'tw-faq-plugin' ),
-					'description'	=> __( 'This is a standard text field.', 'tw-faq-plugin' ),
-					'type'			=> 'text',
-					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text', 'tw-faq-plugin' )
-				),
-				array(
-					'id' 			=> 'password_field',
-					'label'			=> __( 'A Password' , 'tw-faq-plugin' ),
-					'description'	=> __( 'This is a standard password field.', 'tw-faq-plugin' ),
-					'type'			=> 'password',
-					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text', 'tw-faq-plugin' )
-				),
-				array(
-					'id' 			=> 'secret_text_field',
-					'label'			=> __( 'Some Secret Text' , 'tw-faq-plugin' ),
-					'description'	=> __( 'This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved.', 'tw-faq-plugin' ),
-					'type'			=> 'text_secret',
-					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text', 'tw-faq-plugin' )
-				),
-				array(
-					'id' 			=> 'text_block',
-					'label'			=> __( 'A Text Block' , 'tw-faq-plugin' ),
-					'description'	=> __( 'This is a standard text area.', 'tw-faq-plugin' ),
-					'type'			=> 'textarea',
-					'default'		=> '',
-					'placeholder'	=> __( 'Placeholder text for this textarea', 'tw-faq-plugin' )
-				),
-				array(
-					'id' 			=> 'single_checkbox',
-					'label'			=> __( 'An Option', 'tw-faq-plugin' ),
-					'description'	=> __( 'A standard checkbox - if you save this option as checked then it will store the option as \'on\', otherwise it will be an empty string.', 'tw-faq-plugin' ),
+  			array(
+					'id' 			=> 'tw_faq_category',
+					'label'			=> __( 'Enable Categories', 'tw-faq-plugin' ),
+					'description'	=> __( 'Enable FAQ categories', 'tw-faq-plugin' ),
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
 				array(
-					'id' 			=> 'select_box',
-					'label'			=> __( 'A Select Box', 'tw-faq-plugin' ),
-					'description'	=> __( 'A standard select box.', 'tw-faq-plugin' ),
-					'type'			=> 'select',
-					'options'		=> array( 'drupal' => 'Drupal', 'joomla' => 'Joomla', 'wordpress' => 'WordPress' ),
-					'default'		=> 'wordpress'
+					'id' 			=> 'tw_faq_tag',
+					'label'			=> __( 'Enable Tags', 'tw-faq-plugin' ),
+					'description'	=> __( 'Enable FAQ tags', 'tw-faq-plugin' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
 				),
-				array(
-					'id' 			=> 'radio_buttons',
-					'label'			=> __( 'Some Options', 'tw-faq-plugin' ),
-					'description'	=> __( 'A standard set of radio buttons.', 'tw-faq-plugin' ),
-					'type'			=> 'radio',
-					'options'		=> array( 'superman' => 'Superman', 'batman' => 'Batman', 'ironman' => 'Iron Man' ),
-					'default'		=> 'batman'
-				),
-				array(
-					'id' 			=> 'multiple_checkboxes',
-					'label'			=> __( 'Some Items', 'tw-faq-plugin' ),
-					'description'	=> __( 'You can select multiple items and they will be stored as an array.', 'tw-faq-plugin' ),
-					'type'			=> 'checkbox_multi',
-					'options'		=> array( 'square' => 'Square', 'circle' => 'Circle', 'rectangle' => 'Rectangle', 'triangle' => 'Triangle' ),
-					'default'		=> array( 'circle', 'triangle' )
-				)
+//				array(
+//					'id' 			=> 'text_field',
+//					'label'			=> __( 'Some Text' , 'tw-faq-plugin' ),
+//					'description'	=> __( 'This is a standard text field.', 'tw-faq-plugin' ),
+//					'type'			=> 'text',
+//					'default'		=> '',
+//					'placeholder'	=> __( 'Placeholder text', 'tw-faq-plugin' )
+//				),
+//				array(
+//					'id' 			=> 'password_field',
+//					'label'			=> __( 'A Password' , 'tw-faq-plugin' ),
+//					'description'	=> __( 'This is a standard password field.', 'tw-faq-plugin' ),
+//					'type'			=> 'password',
+//					'default'		=> '',
+//					'placeholder'	=> __( 'Placeholder text', 'tw-faq-plugin' )
+//				),
+//				array(
+//					'id' 			=> 'secret_text_field',
+//					'label'			=> __( 'Some Secret Text' , 'tw-faq-plugin' ),
+//					'description'	=> __( 'This is a secret text field - any data saved here will not be displayed after the page has reloaded, but it will be saved.', 'tw-faq-plugin' ),
+//					'type'			=> 'text_secret',
+//					'default'		=> '',
+//					'placeholder'	=> __( 'Placeholder text', 'tw-faq-plugin' )
+//				),
+//				array(
+//					'id' 			=> 'text_block',
+//					'label'			=> __( 'A Text Block' , 'tw-faq-plugin' ),
+//					'description'	=> __( 'This is a standard text area.', 'tw-faq-plugin' ),
+//					'type'			=> 'textarea',
+//					'default'		=> '',
+//					'placeholder'	=> __( 'Placeholder text for this textarea', 'tw-faq-plugin' )
+//				),
+//				array(
+//					'id' 			=> 'select_box',
+//					'label'			=> __( 'A Select Box', 'tw-faq-plugin' ),
+//					'description'	=> __( 'A standard select box.', 'tw-faq-plugin' ),
+//					'type'			=> 'select',
+//					'options'		=> array( 'drupal' => 'Drupal', 'joomla' => 'Joomla', 'wordpress' => 'WordPress' ),
+//					'default'		=> 'wordpress'
+//				),
+//				array(
+//					'id' 			=> 'radio_buttons',
+//					'label'			=> __( 'Some Options', 'tw-faq-plugin' ),
+//					'description'	=> __( 'A standard set of radio buttons.', 'tw-faq-plugin' ),
+//					'type'			=> 'radio',
+//					'options'		=> array( 'superman' => 'Superman', 'batman' => 'Batman', 'ironman' => 'Iron Man' ),
+//					'default'		=> 'batman'
+//				),
+//				array(
+//					'id' 			=> 'multiple_checkboxes',
+//					'label'			=> __( 'Some Items', 'tw-faq-plugin' ),
+//					'description'	=> __( 'You can select multiple items and they will be stored as an array.', 'tw-faq-plugin' ),
+//					'type'			=> 'checkbox_multi',
+//					'options'		=> array( 'square' => 'Square', 'circle' => 'Circle', 'rectangle' => 'Rectangle', 'triangle' => 'Triangle' ),
+//					'default'		=> array( 'circle', 'triangle' )
+//				)
 			)
 		);
 
-		$settings['extra'] = array(
-			'title'					=> __( 'Extra', 'tw-faq-plugin' ),
-			'description'			=> __( 'These are some extra input fields that maybe aren\'t as common as the others.', 'tw-faq-plugin' ),
-			'fields'				=> array(
-				array(
-					'id' 			=> 'number_field',
-					'label'			=> __( 'A Number' , 'tw-faq-plugin' ),
-					'description'	=> __( 'This is a standard number field - if this field contains anything other than numbers then the form will not be submitted.', 'tw-faq-plugin' ),
-					'type'			=> 'number',
-					'default'		=> '',
-					'placeholder'	=> __( '42', 'tw-faq-plugin' )
-				),
-				array(
-					'id' 			=> 'colour_picker',
-					'label'			=> __( 'Pick a colour', 'tw-faq-plugin' ),
-					'description'	=> __( 'This uses WordPress\' built-in colour picker - the option is stored as the colour\'s hex code.', 'tw-faq-plugin' ),
-					'type'			=> 'color',
-					'default'		=> '#21759B'
-				),
-				array(
-					'id' 			=> 'an_image',
-					'label'			=> __( 'An Image' , 'tw-faq-plugin' ),
-					'description'	=> __( 'This will upload an image to your media library and store the attachment ID in the option field. Once you have uploaded an imge the thumbnail will display above these buttons.', 'tw-faq-plugin' ),
-					'type'			=> 'image',
-					'default'		=> '',
-					'placeholder'	=> ''
-				),
-				array(
-					'id' 			=> 'multi_select_box',
-					'label'			=> __( 'A Multi-Select Box', 'tw-faq-plugin' ),
-					'description'	=> __( 'A standard multi-select box - the saved data is stored as an array.', 'tw-faq-plugin' ),
-					'type'			=> 'select_multi',
-					'options'		=> array( 'linux' => 'Linux', 'mac' => 'Mac', 'windows' => 'Windows' ),
-					'default'		=> array( 'linux' )
-				)
-			)
-		);
+//		$settings['extra'] = array(
+//			'title'					=> __( 'Extra', 'tw-faq-plugin' ),
+//			'description'			=> __( 'These are some extra input fields that maybe aren\'t as common as the others.', 'tw-faq-plugin' ),
+//			'fields'				=> array(
+//				array(
+//					'id' 			=> 'number_field',
+//					'label'			=> __( 'A Number' , 'tw-faq-plugin' ),
+//					'description'	=> __( 'This is a standard number field - if this field contains anything other than numbers then the form will not be submitted.', 'tw-faq-plugin' ),
+//					'type'			=> 'number',
+//					'default'		=> '',
+//					'placeholder'	=> __( '42', 'tw-faq-plugin' )
+//				),
+//				array(
+//					'id' 			=> 'colour_picker',
+//					'label'			=> __( 'Pick a colour', 'tw-faq-plugin' ),
+//					'description'	=> __( 'This uses WordPress\' built-in colour picker - the option is stored as the colour\'s hex code.', 'tw-faq-plugin' ),
+//					'type'			=> 'color',
+//					'default'		=> '#21759B'
+//				),
+//				array(
+//					'id' 			=> 'an_image',
+//					'label'			=> __( 'An Image' , 'tw-faq-plugin' ),
+//					'description'	=> __( 'This will upload an image to your media library and store the attachment ID in the option field. Once you have uploaded an imge the thumbnail will display above these buttons.', 'tw-faq-plugin' ),
+//					'type'			=> 'image',
+//					'default'		=> '',
+//					'placeholder'	=> ''
+//				),
+//				array(
+//					'id' 			=> 'multi_select_box',
+//					'label'			=> __( 'A Multi-Select Box', 'tw-faq-plugin' ),
+//					'description'	=> __( 'A standard multi-select box - the saved data is stored as an array.', 'tw-faq-plugin' ),
+//					'type'			=> 'select_multi',
+//					'options'		=> array( 'linux' => 'Linux', 'mac' => 'Mac', 'windows' => 'Windows' ),
+//					'default'		=> array( 'linux' )
+//				)
+//			)
+//		);
 
 		$settings = apply_filters( $this->parent->_token . '_settings_fields', $settings );
 
@@ -278,7 +285,7 @@ class TW_FAQ_Plugin_Settings {
 
 		// Build page HTML
 		$html = '<div class="wrap" id="' . $this->parent->_token . '_settings">' . "\n";
-			$html .= '<h2>' . __( 'Plugin Settings' , 'tw-faq-plugin' ) . '</h2>' . "\n";
+			$html .= '<h2>' . __( 'Third Wunder FAQ Plugin' , 'tw-faq-plugin' ) . '</h2>' . "\n";
 
 			$tab = '';
 			if ( isset( $_GET['tab'] ) && $_GET['tab'] ) {
