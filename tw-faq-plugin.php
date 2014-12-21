@@ -40,23 +40,35 @@ if(!class_exists('AT_Meta_Box')){
  */
 function TW_FAQ_Plugin () {
 	$instance = TW_FAQ_Plugin::instance( __FILE__, '1.0.0' );
-
 	if ( is_null( $instance->settings ) ) {
 		$instance->settings = TW_FAQ_Plugin_Settings::instance( $instance );
 	}
-
 	return $instance;
 }
 
 TW_FAQ_Plugin();
 
+$dir = TW_FAQ_Plugin()->dir;
+$prefix = 'tw_';
+
 $faq_category = get_option('wpt_tw_faq_category') ? get_option('wpt_tw_faq_category') : "off";
 $faq_tag      = get_option('wpt_tw_faq_tag') ? get_option('wpt_tw_faq_tag') : "off";
 
-TW_FAQ_Plugin()->register_post_type( 'tw_faq', __( 'FAQ', 'tw' ), __( 'FAQ', 'tw-faq-plugin' ) );
+TW_FAQ_Plugin()->register_post_type(
+                    'tw_faq',
+                    __( 'FAQ',      'tw-faq-plugin' ),
+                    __( 'FAQ',      'tw-faq-plugin' ),
+                    __( 'FAQ CPT',  'tw-faq-plugin' ),
+                    array(
+                      'menu_icon'=>plugins_url( 'assets/img/cpt-icon-faq.png', __FILE__ ),
+                      'rewrite' => array('slug' => 'faq'),
+                    )
+                  );
+
 if($faq_category=='on'){
   TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_category', __( 'FAQ Categories', 'tw-faq-plugin' ), __( 'FAQ Category', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>true) );
 }
+
 if($faq_tag=='on'){
   TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_tag',      __( 'FAQ Tags', 'tw-faq-plugin' ),       __( 'FAQ Tag', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>false) );
 }
