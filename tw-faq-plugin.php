@@ -51,6 +51,10 @@ TW_FAQ_Plugin();
 $dir = TW_FAQ_Plugin()->dir;
 $prefix = 'tw_';
 
+$faq_slug = get_option('wpt_tw_faq_slug') ? get_option('wpt_tw_faq_slug') : "faq";
+$faq_search = get_option('wpt_tw_faq_search') ? true : false;
+$faq_archive = get_option('wpt_tw_faq_archive') ? true : false;
+
 $faq_category = get_option('wpt_tw_faq_category') ? get_option('wpt_tw_faq_category') : "off";
 $faq_tag      = get_option('wpt_tw_faq_tag') ? get_option('wpt_tw_faq_tag') : "off";
 
@@ -61,7 +65,9 @@ TW_FAQ_Plugin()->register_post_type(
                     __( 'FAQ CPT',  'tw-faq-plugin' ),
                     array(
                       'menu_icon'=>plugins_url( 'assets/img/cpt-icon-faq.png', __FILE__ ),
-                      'rewrite' => array('slug' => 'faq'),
+                      'rewrite' => array('slug' => $faq_slug),
+                      'exclude_from_search' => $faq_search,
+                      'has_archive'     => $faq_archive,
                     )
                   );
 
