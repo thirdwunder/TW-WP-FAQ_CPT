@@ -125,6 +125,13 @@ class TW_FAQ_Plugin_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
+				array(
+					'id' 			=> 'tw_faq_show_sidebar',
+					'label'			=> __( 'Show Sidebar', 'tw-faq-plugin' ),
+					'description'	=> __( 'Show the sidebar in faq template & archive pages', 'tw-faq-plugin' ),
+					'type'			=> 'checkbox',
+					'default'		=> true
+				),
 			)
 		);
 
@@ -154,6 +161,24 @@ class TW_FAQ_Plugin_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> 'on'
 				),
+
+				array(
+					'id' 			=> 'tw_faq_category_slug',
+					'label'			=> __( 'FAQ Category Slug', 'tw-faq-plugin' ),
+					'description'	=> __( 'FAQ Category taxonomy slug', 'tw-faq-plugin' ),
+					'type'			=> 'text',
+					'default'		=> 'faq-category',
+					'placeholder' => 'faq-category',
+				),
+				array(
+					'id' 			=> 'tw_faq_tag_slug',
+					'label'			=> __( 'FAQ Tag Slug', 'tw-faq-plugin' ),
+					'description'	=> __( 'FAQ Tag taxonomy slug', 'tw-faq-plugin' ),
+					'type'			=> 'text',
+					'default'		=> 'faq-tag',
+					'placeholder' => 'faq-tag',
+				),
+
 			)
 		);
 

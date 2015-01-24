@@ -58,6 +58,9 @@ $faq_archive = get_option('wpt_tw_faq_archive') ? true : false;
 $faq_category = get_option('wpt_tw_faq_category') ? get_option('wpt_tw_faq_category') : "off";
 $faq_tag      = get_option('wpt_tw_faq_tag') ? get_option('wpt_tw_faq_tag') : "off";
 
+$faq_cat_slug = get_option('wpt_tw_faq_category_slug') ? get_option('wpt_tw_faq_category_slug') : "faq-category";
+$faq_tag_slug = get_option('wpt_tw_faq_tag_slug') ? get_option('wpt_tw_faq_tag_slug') : "faq-tag";
+
 TW_FAQ_Plugin()->register_post_type(
                     'tw_faq',
                     __( 'FAQ',      'tw-faq-plugin' ),
@@ -72,9 +75,14 @@ TW_FAQ_Plugin()->register_post_type(
                   );
 
 if($faq_category=='on'){
-  TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_category', __( 'FAQ Categories', 'tw-faq-plugin' ), __( 'FAQ Category', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>true) );
+  TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_category', __( 'FAQ Categories', 'tw-faq-plugin' ), __( 'FAQ Category', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>true, 'rewrite'=>array('slug'=>$faq_cat_slug)) );
 }
 
 if($faq_tag=='on'){
-  TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_tag',      __( 'FAQ Tags', 'tw-faq-plugin' ),       __( 'FAQ Tag', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>false) );
+  TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_tag',      __( 'FAQ Tags', 'tw-faq-plugin' ),       __( 'FAQ Tag', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>false, 'rewrite'=>array('slug'=>$faq_tag_slug)) );
+}
+
+function tw_faq_show_siderbar(){
+  $show_sidebar  = (get_option('wpt_tw_faq_show_sidebar') && get_option('wpt_tw_faq_show_sidebar')=='on') ? true : false;
+  return $show_sidebar;
 }
