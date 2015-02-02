@@ -3,7 +3,7 @@
  * Plugin Name: Third Wunder FAQ Plugin
  * Version: 1.0
  * Plugin URI: http://www.thirdwunder.com/
- * Description: Third Wunder slides CPT plugin
+ * Description: Third Wunder FAQ CPT plugin
  * Author: Mohamed Hamad
  * Author URI: http://www.thirdwunder.com/
  * Requires at least: 4.0
