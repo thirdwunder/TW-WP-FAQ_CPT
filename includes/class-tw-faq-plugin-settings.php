@@ -112,6 +112,13 @@ class TW_FAQ_Plugin_Settings {
 			'description'			=> __( 'Third Wunder FAQ plugin settings.', 'tw-faq-plugin' ),
 			'fields'				=> array(
   			array(
+					'id' 			=> 'tw_faq_topic',
+					'label'			=> __( 'Topics', 'tw-faq-plugin' ),
+					'description'	=> __( 'Enable FAQ topics', 'tw-faq-plugin' ),
+					'type'			=> 'checkbox',
+					'default'		=> ''
+				),
+  			array(
 					'id' 			=> 'tw_faq_category',
 					'label'			=> __( 'Categories', 'tw-faq-plugin' ),
 					'description'	=> __( 'Enable FAQ categories', 'tw-faq-plugin' ),
@@ -126,12 +133,22 @@ class TW_FAQ_Plugin_Settings {
 					'default'		=> ''
 				),
 				array(
+					'id' 			=> 'tw_faq_external_links',
+					'label'			=> __( 'External Links', 'tw-faq-plugin' ),
+					'description'	=> __( 'Enable external link options for references and additional resources', 'tw-faq-plugin' ),
+					'type'			=> 'checkbox',
+					'default'		=> true
+				),
+
+/*
+				array(
 					'id' 			=> 'tw_faq_show_sidebar',
 					'label'			=> __( 'Show Sidebar', 'tw-faq-plugin' ),
 					'description'	=> __( 'Show the sidebar in faq template & archive pages', 'tw-faq-plugin' ),
 					'type'			=> 'checkbox',
 					'default'		=> true
 				),
+*/
 			)
 		);
 
@@ -161,7 +178,14 @@ class TW_FAQ_Plugin_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> 'on'
 				),
-
+        array(
+					'id' 			=> 'tw_faq_topic_slug',
+					'label'			=> __( 'FAQ Topic Slug', 'tw-faq-plugin' ),
+					'description'	=> __( 'FAQ Topic taxonomy slug', 'tw-faq-plugin' ),
+					'type'			=> 'text',
+					'default'		=> 'faq-topic',
+					'placeholder' => 'faq-topic',
+				),
 				array(
 					'id' 			=> 'tw_faq_category_slug',
 					'label'			=> __( 'FAQ Category Slug', 'tw-faq-plugin' ),
