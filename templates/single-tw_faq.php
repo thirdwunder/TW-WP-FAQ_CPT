@@ -6,11 +6,15 @@
  * @subpackage Twenty_Fifteen
  * @since TW 1.0
  */
- $image_sizes = array('4x3-small','16x9-medium','16x9-large');
- $links = is_array(get_post_meta(get_the_id(), 'tw_external_links', true))? get_post_meta(get_the_id(), 'tw_external_links', true) : false;
- $faq_topics = get_the_terms(get_the_id(), 'tw_faq_topic');
- $faq_cats = get_the_terms(get_the_id(), 'tw_faq_category');
- $faq_tags = get_the_terms(get_the_id(), 'tw_faq_tag');
+  $image_sizes = array('4x3-small','16x9-medium','16x9-large');
+  $links = is_array(get_post_meta(get_the_id(), 'tw_external_links', true))? get_post_meta(get_the_id(), 'tw_external_links', true) : false;
+
+  $is_faq_category = get_option('wpt_tw_faq_category') == 'on' ? true : false;
+  $is_faq_tag      = get_option('wpt_tw_faq_tag')      == 'on' ? true : false;
+
+  $faq_topics = get_the_terms(get_the_id(), 'tw_faq_topic');
+  $faq_cats = get_the_terms(get_the_id(), 'tw_faq_category');
+  $faq_tags = get_the_terms(get_the_id(), 'tw_faq_tag');
 get_header(); ?>
 <!-- Site Container -->
 <div id="site-content" class="container-fluid">
@@ -27,10 +31,19 @@ get_header(); ?>
             ?>
             <div class="entry-meta post-meta page-meta ">
               <div class="entry-categories container">
+                <?php if(count($faq_topics)>0):?>
+                <span class="tags-title"><?php _e('Topics','tw-faq-plugin');?>:</span>
+                <?php foreach($faq_topics as $faq_topic): ?>
+                  <span class=""><a href="<?php echo get_term_link($faq_topic, 'tw_faq_topic') ;?>" title="<?php echo $faq_topic->name;?>"><?php echo $faq_topic->name;?></a></span>
+                <?php endforeach; ?>
+                <?php endif;?>
+
+                <?php if($is_faq_category):?>
                 <span class="tags-title"><?php _e('Categories','tw-faq-plugin');?>:</span>
                 <?php foreach($faq_cats as $faq_cat): ?>
                   <span class=""><a href="<?php echo get_term_link($faq_cat, 'tw_faq_category') ;?>" title="<?php echo $faq_cat->name;?>"><?php echo $faq_cat->name;?></a></span>
                 <?php endforeach; ?>
+                <?php endif;?>
 
               </div>
             </div>
@@ -68,7 +81,7 @@ get_header(); ?>
           </div>
 
           <footer class="hidden-print entry-footer container">
-            <?php if(count($faq_tags)>0):?>
+            <?php if($is_faq_tag && count($faq_tags)>0):?>
             <div class="entry-tags">
               <span class="tags-title"><?php _e('Tags','tw-faq-plugin');?>:</span>
               <?php foreach($faq_tags as $tag): ?>

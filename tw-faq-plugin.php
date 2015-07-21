@@ -55,7 +55,7 @@ $faq_slug = get_option('wpt_tw_faq_slug') ? get_option('wpt_tw_faq_slug') : "faq
 $faq_search = get_option('wpt_tw_faq_search') ? true : false;
 $faq_archive = get_option('wpt_tw_faq_archive') ? true : false;
 
-$faq_topic    = get_option('wpt_tw_faq_topic')    == 'on' ? true : false;
+//$faq_topic    = get_option('wpt_tw_faq_topic')    == 'on' ? true : false;
 $faq_category = get_option('wpt_tw_faq_category') == 'on' ? true : false;
 $faq_tag      = get_option('wpt_tw_faq_tag')      == 'on' ? true : false;
 
@@ -76,9 +76,9 @@ TW_FAQ_Plugin()->register_post_type(
                     )
                   );
 
-if($faq_topic){
+//if($faq_topic){
   TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_topic', __( 'FAQ Topics', 'tw-faq-plugin' ), __( 'FAQ Topic', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>true, 'rewrite'=>array('slug'=>$faq_topic_slug, 'hierarchical' => true)) );
-}
+//}
 
 if($faq_category){
   TW_FAQ_Plugin()->register_taxonomy( 'tw_faq_category', __( 'FAQ Categories', 'tw-faq-plugin' ), __( 'FAQ Category', 'tw-faq-plugin' ), 'tw_faq', array('hierarchical'=>true, 'rewrite'=>array('slug'=>$faq_cat_slug, 'hierarchical' => true)) );
@@ -134,7 +134,7 @@ if(!function_exists('tw_faq_plugin_external_link_fields')){
 
 function tw_faq_plugin_get_enabled_taxonomies(){
   $taxonomies = array();
-  $faq_topic    = get_option('wpt_tw_faq_topic')    == 'on' ? true : false;
+  //$faq_topic    = get_option('wpt_tw_faq_topic')    == 'on' ? true : false;
   $faq_category = get_option('wpt_tw_faq_category') == 'on' ? true : false;
   $faq_tag      = get_option('wpt_tw_faq_tag')      == 'on' ? true : false;
 
@@ -142,7 +142,9 @@ function tw_faq_plugin_get_enabled_taxonomies(){
   $faq_cat_slug   = get_option('wpt_tw_faq_category_slug')  ? get_option('wpt_tw_faq_category_slug')  : "faq-category";
   $faq_tag_slug   = get_option('wpt_tw_faq_tag_slug')       ? get_option('wpt_tw_faq_tag_slug')       : "faq-tag";
 
-  if($faq_topic){ $taxonomies[] = $faq_topic_slug; }
+  //if($faq_topic){
+    $taxonomies[] = $faq_topic_slug;
+  //}
   if($faq_category){ $taxonomies[] = $faq_cat_slug; }
   if($faq_tag){ $taxonomies[] = $faq_tag_slug; }
 

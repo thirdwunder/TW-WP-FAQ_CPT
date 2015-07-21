@@ -111,6 +111,7 @@ class TW_FAQ_Plugin_Settings {
 			'title'					=> __( 'Settings', 'tw-faq-plugin' ),
 			'description'			=> __( 'Third Wunder FAQ plugin settings.', 'tw-faq-plugin' ),
 			'fields'				=> array(
+/*
   			array(
 					'id' 			=> 'tw_faq_topic',
 					'label'			=> __( 'Topics', 'tw-faq-plugin' ),
@@ -118,6 +119,7 @@ class TW_FAQ_Plugin_Settings {
 					'type'			=> 'checkbox',
 					'default'		=> ''
 				),
+*/
   			array(
 					'id' 			=> 'tw_faq_category',
 					'label'			=> __( 'Categories', 'tw-faq-plugin' ),
