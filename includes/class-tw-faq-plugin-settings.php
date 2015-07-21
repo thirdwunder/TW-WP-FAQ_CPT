@@ -205,6 +205,29 @@ class TW_FAQ_Plugin_Settings {
 
 			)
 		);
+		$pages = array();
+		$pages_args = array(
+    	'sort_order' => 'asc',
+    	'sort_column' => 'post_title',
+    	'hierarchical' => 0,
+    	'parent' => -1,
+    	'post_type' => 'page',
+    	'post_status' => 'publish'
+    );
+		$all_pages = get_pages($pages_args);
+		foreach( $all_pages as $page ) {
+      $pages[$page->ID] = $page->post_title;
+		}
+		$settings['advanced']['fields'][] = array(
+  		'id' 			=> 'tw_faq_page',
+			'label'			=> __( 'FAQ Page', 'tw-faq-plugin' ),
+			'description'	=> __( 'A standard select box.', 'tw-faq-plugin' ),
+			'type'			=> 'select',
+			'options'		=> $pages,
+			//'default'		=> 'wordpress'
+		);
+
+
 
 		$settings = apply_filters( $this->parent->_token . '_settings_fields', $settings );
 
