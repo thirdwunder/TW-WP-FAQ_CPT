@@ -43,6 +43,7 @@ get_header(); ?>
                 <?php if($is_faq_category):?>
                 <span class="tags-title"><?php _e('Categories','tw-faq-plugin');?>:</span>
                 <?php foreach($faq_cats as $faq_cat): ?>
+                <pre><?php var_dump($faq_cat);?></pre>
                   <span class=""><a href="<?php echo get_term_link($faq_cat, 'tw_faq_category') ;?>" title="<?php echo $faq_cat->name;?>"><?php echo $faq_cat->name;?></a></span>
                 <?php endforeach; ?>
                 <?php endif;?>
