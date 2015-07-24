@@ -31,10 +31,11 @@ get_header(); ?>
             ?>
             <div class="entry-meta post-meta page-meta ">
               <div class="entry-categories container">
-                <pre><?php var_dump($faq_topics);?></pre>
+
                 <?php if(count($faq_topics)>0):?>
                 <span class="tags-title"><?php _e('Topics','tw-faq-plugin');?>:</span>
                 <?php foreach($faq_topics as $faq_topic): ?>
+                <pre><?php var_dump($faq_topic);?></pre>
                   <span class=""><a href="<?php echo get_term_link($faq_topic, 'tw_faq_topic') ;?>" title="<?php echo $faq_topic->name;?>"><?php echo $faq_topics->name;?></a></span>
                 <?php endforeach; ?>
                 <?php endif;?>
