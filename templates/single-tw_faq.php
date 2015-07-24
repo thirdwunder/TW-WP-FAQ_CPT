@@ -33,18 +33,17 @@ get_header(); ?>
               <div class="entry-categories container">
 
                 <?php if(count($faq_topics)>0):?>
-                <span class="tags-title"><?php _e('Topics','tw-faq-plugin');?>:</span>
-                <?php foreach($faq_topics as $faq_topic): ?>
-                  <span class=""><a href="<?php echo get_term_link($faq_topic, 'tw_faq_topic') ;?>" title="<?php echo $faq_topic->name;?>"><?php echo $faq_topic->name;?></a></span>
-                <?php endforeach; ?>
+                  <span class="tags-title"><?php _e('Topics','tw-faq-plugin');?>:</span>
+                  <?php foreach($faq_topics as $faq_topic): ?>
+                    <span class=""><a href="<?php echo get_term_link($faq_topic, 'tw_faq_topic') ;?>" title="<?php echo $faq_topic->name;?>"><?php echo $faq_topic->name;?></a></span>
+                  <?php endforeach; ?>
                 <?php endif;?>
 
-                <pre><?php var_dump($faq_cats);?></pre>
-                <?php if($is_faq_category && count($faq_cats)>0):?>
-                <span class="tags-title"><?php _e('Categories','tw-faq-plugin');?>:</span>
-                <?php foreach($faq_cats as $faq_cat): ?>
-                  <span class=""><a href="<?php echo get_term_link($faq_cat, 'tw_faq_category') ;?>" title="<?php echo $faq_cat->name;?>"><?php echo $faq_cat->name;?></a></span>
-                <?php endforeach; ?>
+                <?php if($is_faq_category && $faq_cats && count($faq_cats)>0):?>
+                  <span class="tags-title"><?php _e('Categories','tw-faq-plugin');?>:</span>
+                  <?php foreach($faq_cats as $faq_cat): ?>
+                    <span class=""><a href="<?php echo get_term_link($faq_cat, 'tw_faq_category') ;?>" title="<?php echo $faq_cat->name;?>"><?php echo $faq_cat->name;?></a></span>
+                  <?php endforeach; ?>
                 <?php endif;?>
 
               </div>
