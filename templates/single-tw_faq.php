@@ -70,7 +70,7 @@ get_header(); ?>
               <ul class="fa-ul">
                 <?php foreach($links as $link): ?>
                   <li><a href="<?php echo $link['tw_link_url'];?>" <?php if(isset($link['tw_link_external']) && $link['tw_link_external']=='on'){ echo 'target="_blank"';}?>  >
-                    <i class="fa fa-fw fa-angle-right"></i>
+                    <i class="fa-li fa fa-fw fa-angle-right"></i>
                     <?php echo $link['tw_link_name'];?>
                     <?php if(isset($link['tw_link_external']) && $link['tw_link_external']=='on'):?>
                     <i class="fa fa-fw fa-external-link"></i>
