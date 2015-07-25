@@ -223,7 +223,7 @@ class TW_FAQ_Plugin_Settings {
 		$settings['advanced']['fields'][] = array(
   		'id' 			=> 'tw_faq_page',
 			'label'			=> __( 'FAQ Page', 'tw-faq-plugin' ),
-			'description'	=> __( 'A standard select box.', 'tw-faq-plugin' ),
+			'description'	=> __( 'Glossary page', 'tw-faq-plugin' ),
 			'type'			=> 'select',
 			'options'		=> $pages,
 			//'default'		=> 'wordpress'

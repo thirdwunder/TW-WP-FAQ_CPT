@@ -18,14 +18,14 @@
 get_header(); ?>
 <!-- Site Container -->
 <div id="site-content" class="container-fluid">
-  <?php do_action('tw_faq_plugin_before_faq'); ?>
+  <?php do_action('tw_faq_plugin_before_faq_single'); ?>
   <div id="site-container" class="">
     <div id="primary" class="content-area container">
     	<main id="main" class="site-main" role="main" itemprop="mainContentOfPage">
     	<?php	while ( have_posts() ) : the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php echo tw_html_tag_schema('Article'); ?>>
           <header class="entry-header">
-            <?php do_action('tw_faq_plugin_before_faq_title'); ?>
+            <?php do_action('tw_faq_plugin_before_faq_single_title'); ?>
             <?php
               the_title('<div class="container"><h1 class="entry-title" itemprop="headline">','</h1></div>');
             ?>
@@ -102,6 +102,6 @@ get_header(); ?>
     </div><!-- .content-area -->
 
   </div><!-- #site-container -->
-  <?php do_action('tw_faq_plugin_after_faq'); ?>
+  <?php do_action('tw_faq_plugin_after_faq_single'); ?>
 </div><!-- #site-content -->
 <?php get_footer(); ?>
